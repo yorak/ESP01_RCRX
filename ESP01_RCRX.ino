@@ -18,17 +18,40 @@
 // NOTE: Configure your Servos or H-Bridge motors
 
 // Usually GPIO-0 (pin 0 or TX pin 1)
-//#define CH1_PIN 2
+//#define CH1_PIN 0
 #define HBRIDGE_CH1_PIN1 0
 #define HBRIDGE_CH1_PIN2 2
 
 // Usually GPIO-2 (pin 2 or RX pin 3)
-// #define CH2_PIN 2
+//#define CH2_PIN 2
 #define HBRIDGE_CH2_PIN1 1
 #define HBRIDGE_CH2_PIN2 3
 
+#if (defined(CH1_PIN) && CH1_PIN == 2) || \
+    (defined(HBRIDGE_CH1_PIN1) && HBRIDGE_CH1_PIN1 == 2) || \
+    (defined(HBRIDGE_CH1_PIN2) && HBRIDGE_CH1_PIN2 == 2) || \
+    (defined(CH2_PIN) && CH2_PIN == 2) || \
+    (defined(HBRIDGE_CH2_PIN1) && HBRIDGE_CH2_PIN1 == 2) || \
+    (defined(HBRIDGE_CH2_PIN2) && HBRIDGE_CH2_PIN2 == 2)
+    #define PIN_2_USED
+#endif
+#if (defined(CH1_PIN) && CH1_PIN == 1) || \
+    (defined(HBRIDGE_CH1_PIN1) && HBRIDGE_CH1_PIN1 == 1) || \
+    (defined(HBRIDGE_CH1_PIN2) && HBRIDGE_CH1_PIN2 == 1) || \
+    (defined(CH2_PIN) && CH2_PIN == 1) || \
+    (defined(HBRIDGE_CH2_PIN1) && HBRIDGE_CH2_PIN1 == 1) || \
+    (defined(HBRIDGE_CH2_PIN2) && HBRIDGE_CH2_PIN2 == 1)
+    #define PIN_1_USED
+#endif
+
+// Only use activity led if it is not used by the controls
+#ifndef PIN_1_USED
+  #define ACTIVITY_LED 1
+#endif
 // NOTE: Newer ESP-01S may have LED on GPIO2, b/c it is used for a servo, do not use it at all
-//#define ACTIVITY_LED LED_BUILTIN
+//#ifdef PIN_2_USED
+//  #define ACTIVITY_LED 2
+//#endif
 
 #define LOCAL_UDP_PORT 4242
 #define DEAD_MAN_TIMEOUT 2500
