@@ -1,6 +1,9 @@
 # ESP01_RCRX
 A firmware for ESP01 (ESP8266) to control two servos, one servo and one DC motor or two DC motors.
 
+![Demo](docs/demo.gif)
+*A demonstration with two DC motors controlled with the Roboremo app on Android*
+
 ## Overview
 This firmware is designed for the ESP01 module, based on the ESP8266 microcontroller. It supports controlling two channels which can be configured as servos or as H-bridge outputs for DC motors.
 

@@ -3,8 +3,6 @@
 #include <Servo.h>
 #include "DRV8833ESC.h"
 
-//#define REMOTE_DEBUG 1
-
 //TODO: use https://github.com/MaiaVictor/Bitspeak to generate pronounciable
 // expected AP and let the receiver connect to it! Static password for now!
 
